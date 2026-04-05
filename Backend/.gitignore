@@ -1,14 +1,4 @@
-# Environment variables
-.env
+/node_modules
+/.env
+/.personalTracking.txt
 
-# Node dependencies
-node_modules/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS-specific files
-.DS_Store
-Thumbs.db
