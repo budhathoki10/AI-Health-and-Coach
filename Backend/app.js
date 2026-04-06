@@ -13,6 +13,7 @@ app.use(cookieParser())
 
 const registrationRoute = require("./Routes/Registration.route")
 const LoginRoute = require("./Routes/Login.routes")
+const profileRoute = require("./Routes/profile.routes")
 
 
 
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 
 app.use("/api", registrationRoute)
 app.use("/api", LoginRoute)
+app.use("/api", profileRoute)
 
 app.listen(5000,()=>{
     console.log("Server is running on port 5000")
