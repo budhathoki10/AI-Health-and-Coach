@@ -48,6 +48,6 @@ goalType: {
 
   
 })
-userDataSchema.index({ userId: 1, date: 1 }, { unique: true });
+
 const userModel = mongoose.model('UserData', userDataSchema);
 module.exports = userModel;

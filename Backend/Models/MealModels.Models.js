@@ -5,7 +5,9 @@ const mealSchema= new mogoose.Schema({
         ref: 'UserData',
         required: true
     },
-    MealType:{
+    Meal:[
+        {
+            MealType:{
         type: String,
         enum: ["breakfast", "lunch", "dinner", "snack"],
         required: true
@@ -25,6 +27,12 @@ const mealSchema= new mogoose.Schema({
     Fats:{
         type: Number,
     },
+        RecommendedTime:{
+        type: String,
+    },
+    
+        }
+    ],
     Date:{  
         type: Date,
         required: true
