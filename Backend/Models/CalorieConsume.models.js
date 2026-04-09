@@ -16,10 +16,37 @@ const CalorieSchema= mongoose.Schema({
         type:Number,
         default:0
     },
+       ProtienConsume:{
+        type:Number,
+        default:0
+    },
+        CarbsConsume:{
+        type:Number,
+        default:0
+    },
+        FatConsume:{
+        type:Number,
+        default:0
+    },
+
         TotalCalorie:{
         type:Number,
         default:0
+    },
+      TotalProtien:{
+        type:Number,
+        default:0
+    },
+
+      TotalCarbs:{
+        type:Number,
+        default:0
+    },
+      TotalFats:{
+        type:Number,
+        default:0
     }
+
     ,
     Date:{
         type:Date,

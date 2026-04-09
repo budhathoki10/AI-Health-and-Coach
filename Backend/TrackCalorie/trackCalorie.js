@@ -33,6 +33,9 @@ if(!existingPlan){
         return res.status(404).json({ success: false, message: "Food item not found in today's plan" });
       }
       trackingCalorie.CalorieConsume+= foodItem.Calories
+        trackingCalorie.ProtienConsume+= foodItem.Protein
+          trackingCalorie.CarbsConsume+= foodItem.Carbs
+            trackingCalorie.FatConsume+= foodItem.Fats
           await trackingCalorie.save();
 
       return res.status(200).json({
