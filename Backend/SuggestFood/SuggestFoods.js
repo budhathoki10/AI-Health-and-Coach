@@ -139,11 +139,17 @@ const savedPlan = await mealModel.create({
   Meal: aiMeals
 });
 const totalCalories = savedPlan.Meal.reduce((sum, meal) => sum + meal.Calories, 0);
+const totalProtein = savedPlan.Meal.reduce((sum, meal) => sum + meal.Protein, 0);
+const totalCarbss = savedPlan.Meal.reduce((sum, meal) => sum + meal.Carbs, 0);
+const totalFats = savedPlan.Meal.reduce((sum, meal) => sum + meal.Fats, 0);
 console.log(savedPlan)
     await TrackCalorie.create({
       userID:req.user.id,
       foodID:savedPlan._id,
-      TotalCalorie:totalCalories
+      TotalCalorie:totalCalories,
+      TotalProtien:totalProtein,
+      TotalCarbs:totalCarbss,
+      TotalFats:totalFats
     })
     return res.status(201).json({
       success: true,

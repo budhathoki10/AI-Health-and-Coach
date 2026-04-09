@@ -61,9 +61,24 @@ User Profile:
 - Diet restrictions: ${dietaryRestrictions}
  
 Today's Nutrition:
-- Total calorie in food: ${totalCalorie} kcal
+- Total calorie  to consume: ${trackingCalorie.TotalCalorie} kcal
 - consumed calories: ${trackingCalorie.CalorieConsume || 0}
-- remaining calories: ${(totalCalorie)-(trackingCalorie.CalorieConsume || 0)}
+- remaining calories  to consume: ${(trackingCalorie.TotalCalorie)-(trackingCalorie.CalorieConsume || 0)}
+
+- Total protien  to consume: ${trackingCalorie.TotalProtien}
+- consumed protien: ${trackingCalorie.ProtienConsume || 0}
+- remaining protien  to consume: ${(trackingCalorie.TotalProtien)-(trackingCalorie.ProtienConsume || 0)}
+
+
+- Total fat  to consume: ${trackingCalorie.TotalFats}
+- consumed fat: ${trackingCalorie.FatConsume || 0}
+- remaining protien  to consume: ${(trackingCalorie.TotalFats)-(trackingCalorie.FatConsume || 0)}
+
+
+- Total carbs  to consume: ${trackingCalorie.TotalCarbs}
+- consumed fat: ${trackingCalorie.CarbsConsume || 0}
+- remaining fat to consume: ${(trackingCalorie.TotalCarbs)-(trackingCalorie.CarbsConsume || 0)}
+
 
  
 Coaching Rules:
