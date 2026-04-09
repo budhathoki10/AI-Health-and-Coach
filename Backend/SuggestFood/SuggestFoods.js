@@ -1,16 +1,15 @@
 
 const AIModel = require("../AIModel/AIModel");
+const TrackCalorie = require("../Models/CalorieConsume.models");
 const mealModel = require("../Models/MealModels.Models");
 const userModel = require("../Models/UserData.models");
-
-
 
 const SuggestFood = async (req,res) => {
   try {
     
 
       const userdata= await userModel.findOne({email:req.user.email})
-      console.log("user data is",userdata)
+      // console.log("user data is",userdata)
       let goalType= userdata.goalType
       let ExerciseLevel= userdata.ExerciseLevel
       let dietaryRestrictions= userdata.dietaryRestrictions
@@ -115,6 +114,7 @@ return array of json for four foods
       Date: { $gte: todayStart, $lte: todayEnd }
     });
 
+    
     if (existingPlan) {
       return res.status(200).json({
         success: true,
@@ -122,32 +122,34 @@ return array of json for four foods
         data: existingPlan
       });
     }
+    // console.log(existingPlan)
 
     const aiMeals= await AIModel(Prompt, res);
-console.log("Ai meals",aiMeals)
+//  console.log("Ai meals",aiMeals)
 if (!aiMeals || !Array.isArray(aiMeals) || aiMeals.length === 0) {
   return res.status(500).json({
     success: false,
     message: "AI did not return a valid meal plan"
   });
 }
-    // Generate new plan
-    const savedPlan = await mealModel.create({
-      userID: req.user._id,
-      Date: new Date(),
-      Meal: aiMeals
-    });
-
+// Generate new plan
+const savedPlan = await mealModel.create({
+  userID: req.user._id,
+  Date: new Date(),
+  Meal: aiMeals
+});
+const totalCalories = savedPlan.Meal.reduce((sum, meal) => sum + meal.Calories, 0);
+console.log(savedPlan)
+    await TrackCalorie.create({
+      userID:req.user.id,
+      foodID:savedPlan._id,
+      TotalCalorie:totalCalories
+    })
     return res.status(201).json({
       success: true,
       message: "New meal plan generated and saved",
       data: savedPlan
     });
-
-
-
-
-
   } catch (error) {
     console.error("Gemini API error:", error.message);
     if (error.status === 503) {

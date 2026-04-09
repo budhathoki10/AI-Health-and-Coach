@@ -66,6 +66,8 @@ const WorkoutData = async (req, res) => {
     const todayEnd = new Date();
     todayEnd.setHours(23, 59, 59, 999);
 
+
+
     const existingPlan = await workoutModel.findOne({
       userID: req.user.id,
       Date: { $gte: todayStart, $lte: todayEnd },
