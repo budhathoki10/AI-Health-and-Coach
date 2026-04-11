@@ -8,6 +8,10 @@ const Register= async(req,res)=>{
     const { name, email, password } = parsedData;
 
 try {
+    console.log("JWT_SECRET:", process.env.JWT_SECRET);
+console.log("JWT_EXPIRES_IN:", process.env.JWT_EXPIRES_IN);
+
+
     const findUser = await userModel.findOne({ email });
     if (findUser) {
         return res.status(400).json({
