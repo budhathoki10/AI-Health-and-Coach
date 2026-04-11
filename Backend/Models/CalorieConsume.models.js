@@ -50,7 +50,7 @@ const CalorieSchema= mongoose.Schema({
     ,
     Date:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     }
 })
 const TrackCalorie =   mongoose.model("TrackCalorie",CalorieSchema)

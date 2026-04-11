@@ -1,5 +1,6 @@
 const jwt= require("jsonwebtoken")
 const userModel = require("../Models/UserData.models")
+const bcrypt= require("bcryptjs")
 
 
 const Login= async(req,res)=>{
@@ -12,6 +13,7 @@ try {
             message: "User does not exist"
         });
     }
+
     const isPasswordValid = await bcrypt.compare(password, findUser.password);
     if (!isPasswordValid) {
         return res.status(400).json({

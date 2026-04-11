@@ -1,8 +1,8 @@
 const express = require("express");
 const Authentication = require("../Middleware/Middleware");
-const CaloriesTracking = require("../DashBoard/dshboard");
+const CaloriesTracking = require("../TrackCalorie/trackCalorie");
+
 const router = express.Router();
-router.get("/trackCalories", Authentication, CaloriesTracking);
+router.post("/eatFood/:foodid", Authentication, CaloriesTracking);
 
 module.exports = router;
-

@@ -17,7 +17,10 @@ const profileRoute = require("./Routes/profile.routes")
 const suggestFood= require("./Routes/SuggestMeal.route")
 const WorkOut= require("./Routes/Workout.route")
 const coachchat= require("./Routes/CoachChat.route")
-const trackCalories= require("./Routes/TrackCalories.route")
+const EatFood= require("./Routes/eatFood.route")
+
+const TrackDashbaord= require("./Routes/TrackCalories.route")
+
 
 
 
@@ -34,7 +37,9 @@ app.use("/api", profileRoute)
 app.use("/api", suggestFood)
 app.use("/api", WorkOut)
 app.use("/api", coachchat)
-app.use("/api", trackCalories)
+app.use("/api", EatFood)
+
+app.use("/api", TrackDashbaord)
 
 app.listen(5000,()=>{
     console.log("Server is running on port 5000")
