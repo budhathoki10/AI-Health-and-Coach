@@ -24,10 +24,7 @@ const TrackDashbaord= require("./Routes/TrackCalories.route")
 
 
 
-mongoose.connect(process.env.MONGO_URI,{
-      useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Connected to MongoDB")
 }
 ).catch((err) => {
